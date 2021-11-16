@@ -1,0 +1,7 @@
+{
+  "name": "HackathonIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
