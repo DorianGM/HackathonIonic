@@ -1,20 +1,23 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
     <ion-title>
-      Blank
+      Les Hackathons
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let item of ListeArret" (click)="MonClick(item)">
+      <ion-thumbnail slot="start">
+        <img src="{{item.image}}">
+      </ion-thumbnail>
+      <ion-label>{{item.theme}}</ion-label>
+      
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>
