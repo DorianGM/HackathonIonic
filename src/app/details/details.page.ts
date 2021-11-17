@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { NavigationExtras } from '@angular/router';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -10,7 +11,7 @@ import { NavigationExtras } from '@angular/router';
 export class DetailsPage implements OnInit {
 
   item="";
-
+  user=1;
 
   constructor(private router: Router, private activeRoute : ActivatedRoute) { 
     this.activeRoute.queryParams.subscribe(params => {

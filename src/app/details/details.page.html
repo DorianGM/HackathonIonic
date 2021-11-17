@@ -9,6 +9,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-label>{{item.theme}}</ion-label>
+  <ion-card>
+    <ion-card-header>
+      <img src="{{item.image}}" />
+      <ion-card-title>{{item.theme}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>Adresse : {{item.lieu}} {{item.rue}}, {{item.cp}} {{item.ville}}</ion-item>
+      <ion-item>Commence le : {{item.dateDebut.date | date: 'dd/MM/yyyy' }} à {{item.heureDebut.date | date: 'HH:mm'}}</ion-item>
+      <ion-item>Se termine le : {{item.dateFin.date | date: 'dd/MM/yyyy' }} à {{item.heureFin.date | date: 'HH:mm'}}</ion-item>
+      <ion-item>S'inscrire avant le : {{item.dateLimite.date | date: 'dd/MM/yyyy' }}</ion-item>
+      <ion-item>Nombre de places restantes : {{item.nbPlaces}}</ion-item>
+    </ion-card-content>
+  </ion-card>
  
+  <ion-button *ngIf="user ==0" expand="block">Se connecter</ion-button>
+  <ion-button *ngIf="user ==1" expand="block">Inscription</ion-button>
+
 </ion-content>
