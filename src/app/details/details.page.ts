@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+//import { NativeStorage } from '@ionic-native/native-storage/ngx';
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -15,7 +15,7 @@ export class DetailsPage implements OnInit {
   user=1;
   
 
-  constructor(private router: Router, private activeRoute : ActivatedRoute, private nativeStorage: NativeStorage) { 
+  constructor(private router: Router, private activeRoute : ActivatedRoute, /*private nativeStorage: NativeStorage*/) { 
     this.activeRoute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
         this.item = 
@@ -24,11 +24,11 @@ export class DetailsPage implements OnInit {
 
       
     });
-    this.nativeStorage.getItem('user')
+    /*this.nativeStorage.getItem('user')
   .then(
     data => this.user=1,
     error => this.user=0
-  );
+  );*/
 
   }
 
