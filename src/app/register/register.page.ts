@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { FormGroup } from "@angular/forms";
+import { Router, ActivatedRoute } from "@angular/router";
 import { IonicAuthService } from '../ionic-auth.service';
 
 @Component({
@@ -13,14 +13,18 @@ import { IonicAuthService } from '../ionic-auth.service';
 export class RegisterPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
+  item = "";
 
+  myDate: String = new Date().toISOString();
  
 
   ListeArret:any;
-  constructor(private http: HttpClient,private router:Router) {
-    this.http.get("http://localhost:8000/api/hackathons")
-    .subscribe(results => {
-      this.ListeArret=results
+  constructor(private router: Router, private activeRoute : ActivatedRoute ,private ionicAuthService: IonicAuthService) { 
+    this.activeRoute.queryParams.subscribe(params => {
+      if(this.router.getCurrentNavigation().extras.state){
+        this.item = 
+        this.router.getCurrentNavigation().extras.state.param1;
+      }
     });
   }
 

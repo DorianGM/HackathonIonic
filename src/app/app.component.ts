@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IonicAuthService } from './ionic-auth.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 @Component({
@@ -7,14 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  user=0;
   // user = {
-  //   nom:"toto",
-  //   prenom:"titi",
+  //   nom:"grimaud",
+  //   prenom:"dorian",
   //   login:"tt@tt.fr"
   // }
-   constructor() {
-    // this.nativeStorage.setItem("user",this.user);
-    
+   constructor(private nativeStorage: NativeStorage, private connect: IonicAuthService) {
+    // this.nativeStorage.getItem("isConnect",this.user);
+    this.nativeStorage.getItem("isConnected");
+    //ionic-----service.setIsConnected()
+    this.connect.setIsConnected(this.connect.getConnected());
   }
 }
