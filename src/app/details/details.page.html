@@ -3,7 +3,7 @@
   <ion-toolbar>
     <ion-back-button slot="start"></ion-back-button>
     <ion-title>
-      Les Hackathons
+      Détails du Hackathon
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -24,7 +24,7 @@
     </ion-card-content>
   </ion-card>
  
-  <ion-button *ngIf="user ==0" expand="block">Se connecter</ion-button>
-  <ion-button *ngIf="user ==1" expand="block">Inscription</ion-button>
+  <ion-button *ngIf="isconnected ==0" expand="block" href="./login">Se connecter</ion-button>
+  <ion-button *ngIf="isconnected ==1" expand="block" href="./register">Inscription</ion-button>
 
 </ion-content>

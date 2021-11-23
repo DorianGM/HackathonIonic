@@ -13,7 +13,7 @@ export class HomePage{
 
 
   ListeArret:any;
-  constructor(private http: HttpClient,private router:Router, private nativeStorage: NativeStorage) {
+  constructor(private http: HttpClient,private router:Router) {
     this.http.get("http://localhost:8000/api/hackathons")
     .subscribe(results => {
       this.ListeArret=results;

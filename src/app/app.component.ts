@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  user=0;
   // user = {
   //   nom:"toto",
   //   prenom:"titi",
