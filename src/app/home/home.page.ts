@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { NavigationExtras } from '@angular/router';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomePage{
 
 
   ListeArret:any;
-  constructor(private http: HttpClient,private router:Router) {
+  constructor(private http: HttpClient,private router:Router, private nativeStorage: NativeStorage) {
     this.http.get("http://localhost:8000/api/hackathons")
     .subscribe(results => {
       this.ListeArret=results;

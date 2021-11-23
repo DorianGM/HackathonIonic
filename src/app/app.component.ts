@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-root',
