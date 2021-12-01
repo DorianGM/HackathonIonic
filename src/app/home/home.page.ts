@@ -14,9 +14,10 @@ export class HomePage{
 
   ListeArret:any;
   constructor(private http: HttpClient,private router:Router) {
-    this.http.get("http://localhost:8000/api/hackathons")
+    this.http.get("http://localhost:8000/api/evenements")
     .subscribe(results => {
       this.ListeArret=results;
+      console.log(results);
     });
   }
   

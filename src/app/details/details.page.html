@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card >
     <ion-card-header>
-      <img src="{{item.image}}" />
       <ion-card-title>{{item.theme}}</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
+      <img src="{{item.image}}">
       <ion-item>Adresse : {{item.lieu}} {{item.rue}}, {{item.cp}} {{item.ville}}</ion-item>
       <ion-item>Commence le : {{item.dateDebut.date | date: 'dd/MM/yyyy' }} à {{item.heureDebut.date | date: 'HH:mm'}}</ion-item>
       <ion-item>Se termine le : {{item.dateFin.date | date: 'dd/MM/yyyy' }} à {{item.heureFin.date | date: 'HH:mm'}}</ion-item>
@@ -24,7 +24,8 @@
     </ion-card-content>
   </ion-card>
  
-  <ion-button *ngIf="isconnected ==0" expand="block" href="./login">Se connecter</ion-button>
-  <ion-button *ngIf="isconnected ==1" expand="block" href="./register">Inscription</ion-button>
+  <!-- <ion-button *ngIf="isconnected ==0" expand="block" href="./login">Se connecter</ion-button>
+  <ion-button *ngIf="isconnected ==1" expand="block" href="./register">Inscription</ion-button> -->
+  <ion-button expand="block" (click)="MonClick()">Les Ateliers</ion-button>
 
 </ion-content>

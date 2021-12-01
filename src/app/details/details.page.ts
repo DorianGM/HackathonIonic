@@ -13,7 +13,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class DetailsPage implements OnInit {
 
-  item="";
+  item:any;
   isconnected=0;
   
 
@@ -22,6 +22,8 @@ export class DetailsPage implements OnInit {
       if(this.router.getCurrentNavigation().extras.state){
         this.item = 
         this.router.getCurrentNavigation().extras.state.param1;
+
+
       }
 
       
@@ -32,6 +34,15 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
   }
+  MonClick(){
+    let navigationExtras: NavigationExtras = {
+      state : {
+      param1: this.item
+      }
+      };
+    this.router.navigate(['/ateliers'], navigationExtras);
+  }
+  
 
 }
 

@@ -1,0 +1,23 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>
+      Les Ateliers
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let item of ListeArret">
+      <ion-thumbnail slot="start">
+      </ion-thumbnail>
+      <ion-label>{{item.libelleE}}</ion-label>
+      
+      
+
+    </ion-item>
+  </ion-list>
+ 
+</ion-content>

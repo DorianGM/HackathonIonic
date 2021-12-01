@@ -18,6 +18,6 @@ export class AppComponent {
     // this.nativeStorage.getItem("isConnect",this.user);
     this.nativeStorage.getItem("isConnected");
     //ionic-----service.setIsConnected()
-    this.connect.setIsConnected(this.connect.getConnected());
+    this.connect.setIsConnected(1);
   }
 }
