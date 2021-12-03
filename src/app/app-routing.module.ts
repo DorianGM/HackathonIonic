@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'ateliers',
     loadChildren: () => import('./ateliers/ateliers.module').then( m => m.AteliersPageModule)
   },
+  {
+    path: 'formulaire',
+    loadChildren: () => import('./formulaire/formulaire.module').then( m => m.FormulairePageModule)
+  },
 
 ];
 

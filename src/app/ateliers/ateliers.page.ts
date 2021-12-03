@@ -12,12 +12,13 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class AteliersPage{
   item:any;
   ListeArret:any;
+  isbt=0;
   constructor(private http: HttpClient,private router:Router,private activeRoute : ActivatedRoute ) {
 
     this.activeRoute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
         this.item =  this.router.getCurrentNavigation().extras.state.param1;
-        this.http.get("http://localhost:8000/api/evenements/"+this.item.idH)
+        this.http.get("http://localhost:8000/api/evenements/initiation/"+this.item.idH)
         .subscribe(results => {
           this.ListeArret=results;
         });
@@ -31,10 +32,17 @@ export class AteliersPage{
 
 
 
-  }  
-  
-  ngOnInit() {
   }
   
+  ngOnInit() {
+
+  }
+  MonClick(){
+    let navigationExtras: NavigationExtras = {
+      state : {
+      }
+      };
+    this.router.navigate(['/formulaire'], navigationExtras);
+  }
 
 }
