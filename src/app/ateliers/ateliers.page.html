@@ -12,6 +12,7 @@
   <ion-card *ngFor="let item2 of ListeArret">
     <ion-card-header>
       <ion-card-title>{{item2.libelleE}}</ion-card-title>
+      <ion-item>{{item2.type | uppercase}}</ion-item>
     </ion-card-header>
   
     <ion-card-content>

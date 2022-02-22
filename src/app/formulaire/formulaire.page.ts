@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { NavigationExtras } from '@angular/router';
@@ -14,33 +14,44 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class FormulairePage implements OnInit {
 
-  constructor(private router: Router, private activeRoute : ActivatedRoute, private nativeStorage: NativeStorage,private ionicAuthService: IonicAuthService, public httpClient: HttpClient) { }
+  constructor(private router: Router, public http: HttpClient) { }
 
   ngOnInit() {
     
   }
 
-  // sendPostRequest() {
-  //   var headers = new Headers();
-  //   headers.append("Accept", 'application/json');
-  //   headers.append('Content-Type', 'application/json' );
-  //   const requestOptions = new RequestOptions({ headers: headers });
+  sendPostRequest() {
 
-  //   let postData = {
-  //           "name": "Customer004",
-  //           "email": "customer004@email.com",
-  //           "tel": "0000252525"
-  //   }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+   });
+   let options = {
+      headers: headers
+   }
 
-  //   this.http.post("http://127.0.0.1:8100/ateliers", postData, requestOptions)
-  //     .subscribe(data => {
-  //       console.log(data['_body']);
-  //      }, error => {
-  //       console.log(error);
-  //     });
-  // }
+  
+
+    let postData = {
+            "evenement":'4',
+            "prenom": "Customer004",
+            "nom": "qdqzdqdq",
+            "mail": "customer004@email.com",
+    }
+
+    this.http.post("http://127.0.0.1:8000/api/add/inscriptionevent", postData, options)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
+  }
+
 
   MonClick(){
+
+ 
+
     let navigationExtras: NavigationExtras = {
       state : {
       }
@@ -48,3 +59,4 @@ export class FormulairePage implements OnInit {
     this.router.navigate(['/home'], navigationExtras);
   }
 }
+
