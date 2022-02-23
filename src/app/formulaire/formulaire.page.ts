@@ -6,6 +6,8 @@ import { AppComponent } from '../app.component';
 import { IonicAuthService } from '../ionic-auth.service';
 
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { isNgTemplate } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-formulaire',
@@ -14,7 +16,18 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class FormulairePage implements OnInit {
 
-  constructor(private router: Router, public http: HttpClient) { }
+  formulaire = {evenement:"",prenom:"",nom:"",mail:""}
+  item3 : any;
+
+  constructor(private router: Router, public http: HttpClient) { 
+    if(this.router.getCurrentNavigation().extras.state){
+        
+      this.item3 = 
+      this.router.getCurrentNavigation().extras.state.param3;
+
+
+    };
+  }
 
   ngOnInit() {
     
@@ -25,19 +38,20 @@ export class FormulairePage implements OnInit {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+
    });
    let options = {
       headers: headers
    }
 
-  
+   let postData = {
+    "evenement":this.item3,
+    "prenom": this.formulaire.prenom,
+    "nom": this.formulaire.nom,
+    "mail": this.formulaire.mail,
+}
 
-    let postData = {
-            "evenement":'4',
-            "prenom": "Customer004",
-            "nom": "qdqzdqdq",
-            "mail": "customer004@email.com",
-    }
 
     this.http.post("http://127.0.0.1:8000/api/add/inscriptionevent", postData, options)
       .subscribe(data => {

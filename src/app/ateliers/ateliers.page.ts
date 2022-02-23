@@ -37,12 +37,17 @@ export class AteliersPage{
   ngOnInit() {
 
   }
-  MonClick(){
+  MonClick(idevt){
+    alert(idevt);
     let navigationExtras: NavigationExtras = {
       state : {
+        param3: idevt
       }
       };
     this.router.navigate(['/formulaire'], navigationExtras);
+
+    console.log(this.item);
   }
 
 }
+

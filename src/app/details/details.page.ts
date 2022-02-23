@@ -20,6 +20,7 @@ export class DetailsPage implements OnInit {
   constructor(private router: Router, private activeRoute : ActivatedRoute, private nativeStorage: NativeStorage,private ionicAuthService: IonicAuthService) { 
     this.activeRoute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
+        
         this.item = 
         this.router.getCurrentNavigation().extras.state.param1;
 
