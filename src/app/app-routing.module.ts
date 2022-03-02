@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
   {
+    path: 'filtre',
+    loadChildren: () => import('./filtre/filtre.module').then( m => m.FiltrePageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -30,6 +34,10 @@ const routes: Routes = [
   {
     path: 'formulaire',
     loadChildren: () => import('./formulaire/formulaire.module').then( m => m.FormulairePageModule)
+  },
+  {
+    path: 'filtre',
+    loadChildren: () => import('./filtre/filtre.module').then( m => m.FiltrePageModule)
   },
 
 ];

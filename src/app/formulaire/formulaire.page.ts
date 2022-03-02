@@ -52,13 +52,18 @@ export class FormulairePage implements OnInit {
     "mail": this.formulaire.mail,
 }
 
-
     this.http.post("http://127.0.0.1:8000/api/add/inscriptionevent", postData, options)
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
       });
+
+      let navigationExtras: NavigationExtras = {
+        state : {
+        }
+        };
+      this.router.navigate(['/home'], navigationExtras);
   }
 
 
