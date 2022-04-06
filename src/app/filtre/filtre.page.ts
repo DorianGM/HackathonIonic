@@ -12,7 +12,7 @@ export class FiltrePage implements OnInit {
   ListeArret:any;
 
   constructor(private http: HttpClient,private router:Router) {
-    this.http.get("http://localhost:8000/api/evenements")
+    this.http.get("http://192.168.4.1/~sboitel/HackatWebInProd/public/api/evenements")
     .subscribe(results => {
       this.ListeArret=results;
       console.log(results);

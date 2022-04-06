@@ -10,23 +10,25 @@
 
 <ion-content [fullscreen]="true">
   <ion-card *ngFor="let item2 of ListeArret">
+    <div class="wrapper">
     <ion-card-header>
       <ion-card-title>{{item2.libelleE}}</ion-card-title>
 
-      <ion-item>{{item2.type | uppercase}}</ion-item>
+      <div>{{item2.type | uppercase}}</div>
     </ion-card-header>
   
     <ion-card-content>
-      <ion-item>Date : {{item2.dateE.date | date: 'dd/MM/yyyy' }}</ion-item>
-      <ion-item>Heure : {{item2.heureE.date | date: 'HH:mm'}} </ion-item>
-      <ion-item>Durée : {{item2.dureeE.date | date: 'HH:mm'}}</ion-item>
-      <ion-item>Salle : {{item2.salleE}}</ion-item>
-      <ion-item *ngIf="item2.nbParticipants > 0">Nombre de places restantes : {{item2.nbParticipants}}</ion-item>
-      <ion-item *ngIf="item2.nbParticipants <= 0">Thème : {{item2.themeE}}</ion-item>
-      <ion-item *ngIf="item2.nbParticipants <= 0">Intervenant : {{item2.intervenant}}</ion-item>
+      <div>Date : {{item2.dateE.date | date: 'dd/MM/yyyy' }}</div>
+      <div>Heure : {{item2.heureE.date | date: 'HH:mm'}} </div>
+      <div>Durée : {{item2.dureeE.date | date: 'HH:mm'}}</div>
+      <div>Salle : {{item2.salleE}}</div>
+      <div *ngIf="item2.nbParticipants > 0">Nombre de places restantes : {{item2.nbParticipants}}</div>
+      <div *ngIf="item2.nbParticipants <= 0">Thème : {{item2.themeE}}</div>
+      <div *ngIf="item2.nbParticipants <= 0">Intervenant : {{item2.intervenant}}</div>
       <ion-button *ngIf="item2.nbParticipants > 0" expand="block" (click)="MonClick(item2.idEvent)">S'inscrire</ion-button>
       
     </ion-card-content>
+  </div>
   </ion-card>
 
 

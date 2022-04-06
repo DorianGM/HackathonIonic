@@ -9,21 +9,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <ion-card >
+    <div class="wrapper">
     <ion-card-header>
       <ion-card-title>{{item.theme}}</ion-card-title>
       
     </ion-card-header>
   
-    <ion-card-content>
+    <ion-card-content >
       <img src="{{item.image}}">
-      <ion-item>Adresse : {{item.lieu}} {{item.rue}}, {{item.cp}} {{item.ville}}</ion-item>
-      <ion-item>Commence le : {{item.dateDebut.date | date: 'dd/MM/yyyy' }} à {{item.heureDebut.date | date: 'HH:mm'}}</ion-item>
-      <ion-item>Se termine le : {{item.dateFin.date | date: 'dd/MM/yyyy' }} à {{item.heureFin.date | date: 'HH:mm'}}</ion-item>
-      <ion-item>S'inscrire avant le : {{item.dateLimite.date | date: 'dd/MM/yyyy' }}</ion-item>
-      <ion-item>Nombre de places restantes : {{item.nbPlaces}}</ion-item>
-    </ion-card-content>
+      <div>Adresse : {{item.lieu}} {{item.rue}}, {{item.cp}} {{item.ville}}</div>
+      <div>Commence le : {{item.dateDebut.date | date: 'dd/MM/yyyy' }} à {{item.heureDebut.date | date: 'HH:mm'}}</div>
+      <div>Se termine le : {{item.dateFin.date | date: 'dd/MM/yyyy' }} à {{item.heureFin.date | date: 'HH:mm'}}</div>
+      <div>S'inscrire avant le : {{item.dateLimite.date | date: 'dd/MM/yyyy' }}</div>
+      
+      <div *ngIf="item.nbPlaces >= 15">Nombre de places restantes : <ion-badge color="tertiary" slot="end" >{{item.nbPlaces}}</ion-badge></div>
+      <div *ngIf="item.nbPlaces > 5 && item.nbPlaces<15">Nombre de places restantes : <ion-badge color="warning" slot="end" >{{item.nbPlaces}}</ion-badge></div>
+      <div *ngIf="item.nbPlaces <= 5">Nombre de places restantes : <ion-badge color="danger" slot="end" >{{item.nbPlaces}}</ion-badge></div>
+    </ion-card-content> 
+    </div>
+    <div id="map" style="height:300px;"></div>
   </ion-card>
+  
+
  
   <!-- <ion-button *ngIf="isconnected ==0" expand="block" href="./login">Se connecter</ion-button>
   <ion-button *ngIf="isconnected ==1" expand="block" href="./register">Inscription</ion-button> -->

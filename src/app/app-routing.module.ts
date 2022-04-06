@@ -40,6 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./filtre/filtre.module').then( m => m.FiltrePageModule)
   },
 
+
 ];
 
 @NgModule({

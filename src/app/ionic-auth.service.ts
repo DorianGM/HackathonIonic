@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class IonicAuthService {
 isConnected = 0;
   
-  constructor(private angularFireAuth: AngularFireAuth, private nativeStorage: NativeStorage) { }
+  constructor(private angularFireAuth: AngularFireAuth) { }
 
   setIsConnected(val){
     this.isConnected=val;
@@ -29,7 +29,6 @@ isConnected = 0;
           res => {
             this.isConnected=1;
             //set native storage isConnected {isconnected:1, user:res}
-            this.nativeStorage.setItem('isConnected', {isconnected: this.isConnected, user: res})
             resolve(res);
           },
           err => reject(err))
@@ -46,7 +45,6 @@ isConnected = 0;
             console.log("Sign out");
             this.isConnected=0;
             //set native storage isConnected {isconnected:1, user:[]}
-            this.nativeStorage.setItem('isConnected', {isconnected: this.isConnected, valUser: []})
             resolve();
           }).catch(() => {
             reject();

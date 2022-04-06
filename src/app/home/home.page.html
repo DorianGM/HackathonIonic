@@ -6,7 +6,8 @@
       Les Hackathons
     </ion-title>
   </ion-toolbar>
-  <ion-select value="Lille" (ionChange)="onChange($event)">
+  <ion-select value="{{item}}" (ionChange)="onChange($event)">
+    <ion-select-option  value="">Toutes les villes</ion-select-option>
     <ion-select-option *ngFor="let item of ListeVille" value="{{item}}">{{item}}</ion-select-option>
 
   </ion-select>
@@ -14,7 +15,8 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let item of ListeArretAff" (click)="MonClick(item)">
+    
+    <ion-item class="liste" *ngFor="let item of ListeArretAff" (click)="MonClick(item)">
       <ion-thumbnail slot="start">
         <img src="{{item.image}}">
       </ion-thumbnail>

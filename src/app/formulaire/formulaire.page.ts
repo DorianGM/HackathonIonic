@@ -5,7 +5,7 @@ import { NavigationExtras } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { IonicAuthService } from '../ionic-auth.service';
 
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Storage } from '@ionic/storage';
 import { isNgTemplate } from '@angular/compiler';
 
 
@@ -19,15 +19,32 @@ export class FormulairePage implements OnInit {
   formulaire = {evenement:"",prenom:"",nom:"",mail:""}
   item3 : any;
 
-  constructor(private router: Router, public http: HttpClient) { 
+  constructor(private router: Router, public http: HttpClient, private storage: Storage) { 
     if(this.router.getCurrentNavigation().extras.state){
         
       this.item3 = 
       this.router.getCurrentNavigation().extras.state.param3;
 
+      this.storage.get('utilisateur')
+
+      .then(
+
+        data => {
+          this.formulaire.mail = data.mail,
+          this.formulaire.prenom = data.prenom,
+          this.formulaire.nom = data.nom
+        },
+
+        error => console.error(error)
+
+      );
+
 
     };
+
   }
+
+
 
   ngOnInit() {
     
@@ -35,7 +52,7 @@ export class FormulairePage implements OnInit {
 
   sendPostRequest() {
 
-    let headers = new HttpHeaders({
+    /* let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -43,7 +60,7 @@ export class FormulairePage implements OnInit {
    });
    let options = {
       headers: headers
-   }
+   } */
 
    let postData = {
     "evenement":this.item3,
@@ -52,25 +69,27 @@ export class FormulairePage implements OnInit {
     "mail": this.formulaire.mail,
 }
 
-    this.http.post("http://127.0.0.1:8000/api/add/inscriptionevent", postData, options)
-      .subscribe(data => {
-        console.log(data['_body']);
-       }, error => {
-        console.log(error);
-      });
+this.storage.set('utilisateur', postData);
+  
 
-      let navigationExtras: NavigationExtras = {
-        state : {
-        }
-        };
-      this.router.navigate(['/home'], navigationExtras);
+
+          this.http.post("http://127.0.0.1:8000/api/add/inscriptionevent", postData)
+          .subscribe(data => {
+            console.log(data['_body']);
+           }, error => {
+            console.log(error);
+          });
+    
+          let navigationExtras: NavigationExtras = {
+            state : {
+            }
+            };
+          this.router.navigate(['/home'], navigationExtras);
+
   }
 
 
   MonClick(){
-
- 
-
     let navigationExtras: NavigationExtras = {
       state : {
       }

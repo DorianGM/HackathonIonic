@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { NavigationExtras } from '@angular/router';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 @Component({
   selector: 'app-ateliers',
@@ -18,7 +18,7 @@ export class AteliersPage{
     this.activeRoute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
         this.item =  this.router.getCurrentNavigation().extras.state.param1;
-        this.http.get("http://localhost:8000/api/evenements/initiation/"+this.item.idH)
+        this.http.get("192.168.4.1/~sboitel/HackatWebInProd/public/api/evenements/initiation/"+this.item.idH)
         .subscribe(results => {
           this.ListeArret=results;
         });
