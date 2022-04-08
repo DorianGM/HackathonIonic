@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { IonicAuthService } from '../ionic-auth.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Map, tileLayer, marker, icon } from 'leaflet';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class DetailsPage implements OnInit {
   long: any = 0.0;
 
 
-  constructor(private router: Router, private activeRoute: ActivatedRoute, private ionicAuthService: IonicAuthService, private geolocation: Geolocation) {
+  constructor(private socialSharing: SocialSharing, private router: Router, private activeRoute: ActivatedRoute, private ionicAuthService: IonicAuthService, private geolocation: Geolocation) {
     this.activeRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
 
@@ -33,10 +34,12 @@ export class DetailsPage implements OnInit {
 
 
     });
+    console.log(this.item);
     this.isconnected = this.ionicAuthService.getConnected();
 
 
   }
+  
 
   ionViewDidEnter() {
 
@@ -92,7 +95,27 @@ export class DetailsPage implements OnInit {
     this.router.navigate(['/ateliers'], navigationExtras);
   }
 
+  partager() {
+    // Check if sharing via email is supported
+    this.socialSharing.canShareViaEmail().then(() => {
+      // Sharing via email is possible
+    }).catch(() => {
+      // Sharing via email is not possible
+    });
+    // Share via email
+    this.socialSharing.shareViaEmail('Body', 'Subject', ['sovann.boitel@gmail.com']).then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
+
+  }
+
+
+
 
 }
+
+
 
 

@@ -27,6 +27,8 @@
       <div *ngIf="item.nbPlaces >= 15">Nombre de places restantes : <ion-badge color="tertiary" slot="end" >{{item.nbPlaces}}</ion-badge></div>
       <div *ngIf="item.nbPlaces > 5 && item.nbPlaces<15">Nombre de places restantes : <ion-badge color="warning" slot="end" >{{item.nbPlaces}}</ion-badge></div>
       <div *ngIf="item.nbPlaces <= 5">Nombre de places restantes : <ion-badge color="danger" slot="end" >{{item.nbPlaces}}</ion-badge></div>
+      <ion-button expand="block" (click)="partager()">Partager</ion-button>
+
     </ion-card-content> 
     </div>
     <div id="map" style="height:300px;"></div>

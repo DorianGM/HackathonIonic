@@ -18,7 +18,7 @@ export class AteliersPage{
     this.activeRoute.queryParams.subscribe(params => {
       if(this.router.getCurrentNavigation().extras.state){
         this.item =  this.router.getCurrentNavigation().extras.state.param1;
-        this.http.get("192.168.4.1/~sboitel/HackatWebInProd/public/api/evenements/initiation/"+this.item.idH)
+        this.http.get("https://www.sio-savary.fr/~sboitel/HackatWebInProd/public/api/evenements/initiation/"+this.item.id)
         .subscribe(results => {
           this.ListeArret=results;
         });

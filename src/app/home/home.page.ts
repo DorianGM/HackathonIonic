@@ -16,7 +16,7 @@ export class HomePage{
   ListeArretAff:any;
   ListeVille:any;
   constructor(private http: HttpClient,private router:Router) {
-    this.http.get("http://192.168.4.1/~sboitel/HackatWebInProd/public/api/hackathons")
+    this.http.get("https://www.sio-savary.fr/~sboitel/HackatWebInProd/public/api/hackathons")
     .subscribe(results => {
       this.ListeArret=results;
       this.ListeArretAff=results;
