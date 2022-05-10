@@ -11,7 +11,15 @@ Pour installer node js, il suffit de se rendre sur le site de [Node JS](https://
 npm install -g cordova ionic
 ```
 
-### Lancement du projet :
+## Lancement du projet :
+
+>Ensuite cloner le projet dans votre répertoire personnel :
+
+```bash
+git clone https://github.com/DorianGM/HackathonIonic.git
+```
+
+>Puis pour lancer l'application :
 
 ```bash
 ionic serve
