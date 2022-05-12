@@ -19,6 +19,12 @@ npm install -g cordova ionic
 git clone https://github.com/DorianGM/HackathonIonic.git
 ```
 
+>Une fois dans le dossier du projet, il faut installer les fichiers manquants :
+
+```bash
+npm install
+```
+
 >Puis pour lancer l'application :
 
 ```bash
